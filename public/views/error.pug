@@ -1,0 +1,46 @@
+extends base
+
+block head
+  style.
+    main.main {
+      flex: 1;
+      display: flex;
+    }
+
+    .error {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 4rem 2rem;
+    }
+
+    .heading-secondary--error {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .error__emoji {
+      font-size: 3rem;
+      line-height: 1;
+      margin-top: 0.5rem;
+    }
+
+    .error__msg {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+block content
+  main.main
+    .error
+      h2.heading-secondary.heading-secondary--error Uh oh! Something went wrong!
+      if env === 'development'
+        h2.error__emoji 😢 🤯
+      p.error__msg= msg

@@ -1,0 +1,199 @@
+extends base
+
+block content
+  style.
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    /* Variables are already in base.pug, but we can rely on them here */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* --- The Layout: Full Width & Edge-to-Edge --- */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr; 
+      min-height: calc(100vh - 85px); 
+      width: 100% !important;
+      max-width: 100% !important; 
+      margin: 0 !important; 
+      padding: 0 !important; 
+      align-items: stretch; 
+    }
+
+    /* --- Left Side: Showcase --- */
+    .showcase {
+      position: relative;
+      border-radius: 0 300px 300px 0; 
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 6rem;
+      box-shadow: 15px 0 30px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+
+    .showcase__bg {
+      position: absolute;
+      inset: 0; 
+      /* Changed to tour-2-cover.jpg for the signup page */
+      background: url('/img/tours/tour-2-cover.jpg') center/cover no-repeat;
+      transition: transform 0.8s ease-in-out;
+      z-index: 1;
+    }
+
+    .showcase__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 65%, rgba(11, 15, 25, 0.95) 100%);
+      transition: opacity 0.8s ease-in-out;
+      z-index: 2;
+    }
+
+    .showcase:hover .showcase__bg {
+      transform: scale(1.15); 
+    }
+
+    .showcase:hover .showcase__overlay {
+      opacity: 0; 
+    }
+
+    .showcase__content {
+      position: relative;
+      z-index: 3;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+      pointer-events: none;
+    }
+
+    .showcase__title {
+      font-size: 4rem; 
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+
+    .showcase__title span {
+      color: var(--primary);
+    }
+
+    .showcase__text {
+      font-size: 1.2rem;
+      color: #fff;
+      max-width: 85%;
+      line-height: 1.6;
+    }
+
+    /* --- Right Side: Auth Section --- */
+    .auth-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .auth-form {
+      max-width: 480px; /* Slightly wider to accommodate 4 fields comfortably */
+      width: 100%;
+      background-color: var(--bg-surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .heading-secondary {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .form__group { margin-bottom: 1.25rem; }
+
+    .form__label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form__input {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form__input::placeholder { color: #475569; }
+
+    .form__input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .btn--green {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      background-color: var(--primary);
+      color: #042f2e;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn--green:hover {
+      background-color: #34d399;
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 900px) {
+      .split-layout { grid-template-columns: 1fr; }
+      .showcase { display: none; }
+    }
+
+  main.main.split-layout
+    //- Left Side Edge-to-Edge Showcase
+    .showcase
+      .showcase__bg
+      .showcase__overlay
+      .showcase__content
+        h1.showcase__title Start Your 
+          span Journey
+        p.showcase__text Create an account today to book exclusive tours, save your favorite destinations, and join our community of adventurers.
+    
+    //- Right Side Signup Box
+    .auth-section
+      .auth-form
+        h2.heading-secondary Create your account
+        form.form.form--signup
+          .form__group
+            label.form__label(for='name') Full Name
+            input#name.form__input(type='text', placeholder='Your Name', required)
+          .form__group
+            label.form__label(for='email') Email address
+            input#email.form__input(type='email', placeholder='you@example.com', required)
+          .form__group
+            label.form__label(for='password') Password
+            input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+          .form__group
+            label.form__label(for='passwordConfirm') Confirm Password
+            input#passwordConfirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+          .form__group
+            button.btn.btn--green Sign up

@@ -1,0 +1,39 @@
+{
+  "name": "app2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:prod": "set NODE_ENV=production&& nodemon server.js",
+    "dev": "nodemon server.js",
+    "parcel": "parcel index.html",
+    "watch:js": "parcel watch public/js/index.js --dist-dir public/js/dist --no-hmr"
+  },
+  "dependencies": {
+    "axios": "^1.19.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.6.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.5.0",
+    "mongoose": "^9.7.4",
+    "nodemailer": "^9.0.3",
+    "pug": "^3.0.4",
+    "slugify": "^1.6.9",
+    "uuid": "^14.0.2",
+    "validator": "^13.15.35",
+    "xss-clean": "^0.1.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "parcel": "^2.16.4"
+  }
+}

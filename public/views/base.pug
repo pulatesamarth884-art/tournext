@@ -1,0 +1,258 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title TourNest | Exciting tours for adventurous people
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap", rel="stylesheet")
+    link(rel="shortcut icon", type="image/png", href="/img/tour-transparent-icon.png")
+    style.
+      :root {
+        --bg-body: #0b0f19;
+        --bg-surface: #151c2c;
+        --bg-surface-hover: #29374f;
+        --primary: #10b981;
+        --primary-glow: rgba(16, 185, 129, 0.25);
+        --accent: #38bdf8;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: #232d42;
+        --radius: 20px;
+        --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header Nav */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(11, 15, 25, 0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav__el {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav__el:hover {
+        color: var(--primary);
+      }
+
+      .nav__search {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 99px;
+        padding: 0.5rem 1rem;
+        transition: border-color 0.2s ease;
+      }
+
+      .nav__search:focus-within {
+        border-color: var(--primary);
+      }
+
+      .nav__search-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav__search-btn svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--text-muted);
+      }
+
+      .nav__search-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text-main);
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .header__logo img {
+        height: 56px;
+      }
+
+      .nav__user-img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary);
+      }
+
+      /* Auth buttons */
+      .nav__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 1.4rem;
+        border-radius: 99px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+      }
+
+      .nav__btn--login {
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        background: transparent;
+      }
+
+      .nav__btn--login:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .nav__btn--logout {
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        background: transparent;
+      }
+
+      .nav__btn--logout:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .nav__btn--signup {
+        background-color: var(--primary);
+        color: #042f2e;
+      }
+
+      .nav__btn--signup:hover {
+        background-color: #34d399;
+      }
+
+      .nav--user {
+        gap: 0.6rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #070a12;
+        border-top: 1px solid var(--border);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .footer__logo img {
+        height: 76px;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+
+      .footer__nav {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .footer__nav a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .footer__nav a:hover {
+        color: var(--primary);
+      }
+
+      .footer__copyright {
+        font-size: 0.85rem;
+        color: #475569;
+      }
+      
+    block head
+
+
+  body
+    mixin userProfile(user)
+      if user
+        a.nav__btn.nav__btn--logout Log out
+        a.nav__el(href="/view/me")
+          img.nav__user-img(src=`./public/img/users/${user.photo}`, alt=user.name)
+          span= user.name
+      else
+        a.nav__btn.nav__btn--login(href="/view/login") Login
+        a.nav__btn.nav__btn--signup(href="/view/signup") Sign up
+
+    header.header
+      nav.nav.nav--tours
+        a.nav__el(href="/view/") All tours
+        form.nav__search
+          button.nav__search-btn(type="submit")
+            svg
+              use(xlink:href="/img/icons.svg#icon-search")
+          input.nav__search-input(type="text", placeholder="Search tours")
+
+      .header__logo
+        img(src="/img/tour-logo-white.png", alt="Natours logo")
+
+      nav.nav.nav--user
+        +userProfile(user)
+
+    block content
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
+    script(src='/js/updateSetting.js')
+    script(src='/js/login.js')
+    script(src='/js/index.js')
+
+    footer.footer
+      .footer__logo
+        img(src="/img/tour-logo.png", alt="Natours logo")
+      ul.footer__nav
+        li: a(href="#") About us
+        li: a(href="#") Download apps
+        li: a(href="#") Become a guide
+        li: a(href="#") Careers
+        li: a(href="#") Contact
+      p.footer__copyright &copy; by Samarth Pulate. All rights reserved.

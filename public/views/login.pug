@@ -1,0 +1,122 @@
+extends base
+
+block content
+  style.
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg-body: #0b0f19;
+      --bg-surface: #151c2c;
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #232d42;
+      --radius: 20px;
+      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* --- Centered Layout --- */
+    .login-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 85px); /* Subtracting header height */
+
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 2rem !important;
+      box-sizing: border-box;
+    }
+
+    .login-form {
+      max-width: 450px;
+      width: 100%;
+      background-color: var(--bg-surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .heading-secondary {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .form__group { margin-bottom: 1.5rem; }
+
+    .form__label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .form__input {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-main);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form__input::placeholder { color: #475569; }
+
+    .form__input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .btn--green {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      background-color: var(--primary);
+      color: #042f2e;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn--green:hover {
+      background-color: #34d399;
+      transform: scale(1.03);
+    }
+
+  main.main.login-page
+    .login-form
+      h2.heading-secondary Log into your account
+      form.form.form--login
+        .form__group
+          label.form__label(for='email') Email address
+          input#email.form__input(type='email', placeholder='you@example.com', required)
+        .form__group.ma-bt-md
+          label.form__label(for='password') Password
+          input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+        .form__group
+          button.btn.btn--green Login
