@@ -1,1 +1,1 @@
-console.log('hello form parcel');
+//console.log('hello form parcel');

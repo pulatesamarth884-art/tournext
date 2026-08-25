@@ -4,16 +4,16 @@ const catchAsync = require("../utils/catchAsync.js");
 const AppError = require("./../utils/appError.js");
 
 exports.createTour = async(req,res) => {
-        const createTour = await Tour.create(req.body);
+    const createTour = await Tour.create(req.body);
 
-        if(!createTour) {
-            return next(new AppError('fail to create tour...', 404));
-        }
+    if(!createTour) {
+        return next(new AppError('fail to create tour...', 404));
+    }
 
-        res.status(201).json({
-            status: 'sucesss',
-            tour: createTour
-        });
+    res.status(201).json({
+        status: 'sucesss',
+        tour: createTour
+    });
 };
 
 exports.getTour = catchAsync(async(req, res, next) => {

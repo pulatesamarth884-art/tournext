@@ -218,16 +218,16 @@ html(lang="en")
     mixin userProfile(user)
       if user
         a.nav__btn.nav__btn--logout Log out
-        a.nav__el(href="/view/me")
+        a.nav__el(href="/me")
           img.nav__user-img(src=`./public/img/users/${user.photo}`, alt=user.name)
           span= user.name
       else
-        a.nav__btn.nav__btn--login(href="/view/login") Login
-        a.nav__btn.nav__btn--signup(href="/view/signup") Sign up
+        a.nav__btn.nav__btn--login(href="/login") Login
+        a.nav__btn.nav__btn--signup(href="/signup") Sign up
 
     header.header
       nav.nav.nav--tours
-        a.nav__el(href="/view/") All tours
+        a.nav__el(href="/") All tours
         form.nav__search
           button.nav__search-btn(type="submit")
             svg
