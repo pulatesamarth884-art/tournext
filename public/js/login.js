@@ -20,9 +20,9 @@ const login = async(email, password) => {
             alert("Login fail...");
         };
 
-        console.log(result);
+        //console.log(result);
     } catch(err) {
-        console.log(err.response);
+        //console.log(err.response);
     }; 
 };
  
