@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "start:prod": "set NODE_ENV=production&& nodemon server.js",
-    "dev": "nodemon server.js",
+    "dev": "npx nodemon --trace-warnings server.js",
     "parcel": "parcel index.html",
     "watch:js": "parcel watch public/js/index.js --dist-dir public/js/dist --no-hmr"
   },
